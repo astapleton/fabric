@@ -12,6 +12,7 @@ class FabExecutor(Executor):
         ret = []
         # TODO: mesh well with Invoke list-type args helper (inv #132)
         hosts = self.core[0].args.hosts.value
+        hosts = hosts if hosts else self.config.hosts if 'hosts' in self.config else None
         hosts = hosts.split(',') if hosts else []
         for call in calls:
             # TODO: roles, other non-runtime host parameterizations, etc
