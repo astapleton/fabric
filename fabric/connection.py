@@ -557,7 +557,8 @@ class Connection(Context):
             settings/behaviors; they are documented under
             `.Config.global_defaults`.
         """
-        return self.config.runners.remote(self).run(command, **kwargs)
+        runner = self.config.runners.remote(self)
+        return self._run(runner, command, **kwargs)
 
     @opens
     def sudo(self, command, **kwargs):
